@@ -344,7 +344,7 @@ zvm_switch_keyword_handlers=(
 )
 
 # History for switching keyword
-zvm_switch_keyword_history=()
+#zvm_switch_keyword_history=()
 
 # Display version information
 function zvm_version() {
@@ -2446,8 +2446,8 @@ function zvm_switch_keyword() {
     fi
 
     # Save to history and only keep some recent records
-    zvm_switch_keyword_history+=("${handler}:${word}")
-    zvm_switch_keyword_history=("${zvm_switch_keyword_history[@]: -10}")
+    #zvm_switch_keyword_history+=("${handler}:${word}")
+    #zvm_switch_keyword_history=("${zvm_switch_keyword_history[@]: -10}")
 
     BUFFER="${BUFFER:0:$bpos}${result[1]}${BUFFER:$epos}"
     CURSOR=$((bpos + ${#result[1]} - 1))
@@ -2820,7 +2820,7 @@ function zvm_switch_month() {
   #####################
   # Abbreviation
   local lastlen=0
-  local last="${zvm_switch_keyword_history[-1]}"
+  # local last="${zvm_switch_keyword_history[-1]}"
   local funcmark="${funcstack[1]}:"
   if [[ "$last" =~ "^${funcmark}" ]]; then
     lastlen=$(($#last - $#funcmark))
@@ -3363,7 +3363,7 @@ function zvm_zle-line-finish() {
   # by it.
   local shape=$(zvm_cursor_style $ZVM_CURSOR_USER_DEFAULT)
   zvm_set_cursor $shape
-  zvm_switch_keyword_history=()
+  #zvm_switch_keyword_history=()
 }
 
 # Initialize vi-mode for widgets, keybindings, etc.
